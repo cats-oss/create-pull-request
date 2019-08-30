@@ -7,20 +7,10 @@ from github import Github
 
 
 def get_github_event(github_event_path):
-    
-    print(github_event_path)
-    
     with open(github_event_path) as f:
         github_event = json.load(f)
-        
-    print(github_event)
-        
     if os.environ.get('DEBUG_EVENT') is not None:
         print(json.dumps(github_event, sort_keys=True, indent=2))
-        
-    print(github_event)
-    
-    
     return github_event
 
 
@@ -30,10 +20,10 @@ def ignore_event(github_event):
     # not to commit the changes. They close the PR and delete the branch. This creates a 
     # "push" event that we want to ignore, otherwise it will create another branch and PR on
     # the same commit.   
-    
-    print("check ignore event")
-    print(**github_event)
-    
+    schedule = "schedule" in github_event
+    if schedule == "True":
+        print("Ignoring cron event.")
+        return True
     deleted = "{deleted}".format(**github_event)
     if deleted == "True":
         print("Ignoring delete branch event.")
