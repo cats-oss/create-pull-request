@@ -21,6 +21,7 @@ def ignore_event(github_event):
     # "push" event that we want to ignore, otherwise it will create another branch and PR on
     # the same commit.   
     schedule = "schedule" in github_event
+    print(schedule)
     if schedule == "True":
         print("Ignoring cron event.")
         return True
