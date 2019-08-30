@@ -42,6 +42,10 @@ def pr_branch_exists(repo, branch):
 
 
 def get_head_author(github_event):
+    
+    if "schedule" in github_event:
+        return "cats-bot" "cats-oss@cyberagent.co.jp"
+    
     email = "{head_commit[author][email]}".format(**github_event)
     name = "{head_commit[author][name]}".format(**github_event)
     return email, name
