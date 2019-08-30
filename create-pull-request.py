@@ -80,6 +80,11 @@ def process_event(github_event, repo, branch, base):
     github_token = os.environ['GITHUB_TOKEN']
     github_repository = os.environ['GITHUB_REPOSITORY']
     repo_access_token = os.environ['REPO_ACCESS_TOKEN']
+    
+    print(github_token)
+    print(github_repository)
+    print(repo_access_token)
+    
     # Fetch remaining optional environment variables
     commit_message = os.getenv(
         'COMMIT_MESSAGE',
