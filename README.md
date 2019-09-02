@@ -68,6 +68,8 @@ Here is an example that sets all the environment variables.
         COMMIT_MESSAGE: Auto-modify files by my-file-modifier-action
         PULL_REQUEST_TITLE: Changes from my-file-modifier-action
         PULL_REQUEST_BODY: This is an auto-generated PR with changes from my-file-modifier-action
+        AUTHOR_EMAIL: your-email@cyberagent.co.jp
+        AUTHOR_NAME: your-name
 ```
 
 This configuration will create pull requests that look like this:
