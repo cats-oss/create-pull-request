@@ -83,7 +83,7 @@ def process_event(github_event, repo, branch, base):
     # Fetch required environment variables
     github_token = os.environ['GITHUB_TOKEN']
     github_repository = os.environ['GITHUB_REPOSITORY']
-#     repo_access_token = os.environ['REPO_ACCESS_TOKEN']
+    repo_access_token = os.environ['REPO_ACCESS_TOKEN']
     
     # Fetch remaining optional environment variables
     commit_message = os.getenv(
@@ -101,7 +101,7 @@ def process_event(github_event, repo, branch, base):
     # Set git configuration
     set_git_config(repo.git, author_email, author_name)
     # Update URL for the 'origin' remote
-    set_git_remote_url(repo.git, github_token, github_repository)
+    set_git_remote_url(repo.git, repo_access_token, github_repository)
 
     # Commit the repository changes
     print("Committing changes.")
